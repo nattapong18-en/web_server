@@ -48,7 +48,7 @@ fn handle_connection(mut stream: std::net::TcpStream) {
                 ("HTTP/1.1 200 OK", "Sleep done")
             }
             (Some("POST"), Some("/")) => ("HTTP/1.1 200 OK", "Post received"),
-            _ => ("HTTP/1.1 400 NOT FOUND", "Not found"),
+            _ => ("HTTP/1.1 404 NOT FOUND", "Not found"),
         };
 
         let response = format!(
