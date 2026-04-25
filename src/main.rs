@@ -32,9 +32,15 @@ fn main() {
 
 fn handle_connection(mut stream: std::net::TcpStream) {
     let mut buffer = [0; 1024];
-    let bytes_read = stream.read(&mut buffer).unwrap();
+    let bytes_read = match stream.read(&mut buffer) {
+        Ok(size) => size,
+        Err(e) => {
+            eprintln!("Failed to read from stream: {}", e);
+            return;
+        }
+    };
 
-    // println!("Request: {} ",String::from_utf8_lossy(&buffer[..bytes_read]));
+    
     let request = String::from_utf8_lossy(&buffer[..bytes_read]);
     if let Some(line) = request.lines().next() {
         // println!("Request line: {}",line);
@@ -48,7 +54,7 @@ fn handle_connection(mut stream: std::net::TcpStream) {
                 ("HTTP/1.1 200 OK", "Sleep done")
             }
             (Some("POST"), Some("/")) => ("HTTP/1.1 200 OK", "Post received"),
-            _ => ("HTTP/1.1 400 NOT FOUND", "Not found"),
+            _ => ("HTTP/1.1 404 NOT FOUND", "Not found"),
         };
 
         let response = format!(
