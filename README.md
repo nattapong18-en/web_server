@@ -4,7 +4,7 @@
 
 # Multi-threaded Rust Web Server (From Scratch)
 
-Welcome! I'm **Nattapong@en**, a Computer Engineering student at **Nakhon Phanom University**. This project was created as a learning exercise to deeply understand how a web server operates in Rust without relying on high-level runtime frameworks like `tokio`.
+Welcome! I'm **Nattapong18_en**, a Computer Engineering student at **Nakhon Phanom University**. This project was created as a learning exercise to deeply understand how a web server operates in Rust without relying on high-level runtime frameworks like `tokio`.
 
 ## 🚀 Project Overview
 The goal of this project is to build a functional **HTTP Web Server** from the ground up, focusing on low-level systems programming concepts. By implementing a manual thread pool and handling TCP connections directly, I gained hands-on experience with Rust's ownership, concurrency, and memory safety model.
